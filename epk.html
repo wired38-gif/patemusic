@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PATE — Electronic Press Kit</title>
+  <meta name="description" content="Official EPK for PATE — Country x Hip-Hop artist from Houston's 072 / SWAT Nation. Press, booking, and media contact." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── EPK-specific overrides ── */
+    .epk-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    .epk-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/images/hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.35);
+    }
+    .epk-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 4rem;
+      width: 100%;
+      border-top: 1px solid rgba(212,175,55,0.3);
+    }
+    .epk-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #0a0a0a;
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .epk-hero__title {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.9;
+      color: #fff;
+      margin: 0 0 0.5rem;
+    }
+    .epk-hero__sub {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .epk-hero__meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .epk-hero__meta span {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── EPK layout ── */
+    .epk-body {
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .epk-section {
+      padding: 5rem 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .epk-section--full {
+      max-width: 100%;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    .epk-label {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .epk-heading {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.05;
+      color: #fff;
+      margin: 0 0 2rem;
+    }
+
+    /* ── Two-col bio ── */
+    .epk-bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      align-items: start;
+    }
+    .epk-bio-text p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 1.25rem;
+    }
+    .epk-bio-text p:last-child { margin-bottom: 0; }
+
+    .epk-photo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .epk-photo-stack img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .epk-photo-stack img:first-child {
+      aspect-ratio: 3/4;
+    }
+    .epk-photo-caption {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Stats bar ── */
+    .epk-stats {
+      background: #111;
+      border: 1px solid rgba(212,175,55,0.2);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      divide-x: 1px solid rgba(255,255,255,0.08);
+    }
+    .epk-stat {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .epk-stat:last-child { border-right: none; }
+    .epk-stat__num {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .epk-stat__label {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── Album section ── */
+    .epk-album-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .epk-album-art {
+      width: 240px;
+      height: 240px;
+      background: #1a1a1a;
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .epk-album-art svg {
+      opacity: 0.4;
+    }
+    .epk-album-info h3 {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #fff;
+      margin: 0 0 0.5rem;
+      line-height: 1.2;
+    }
+    .epk-album-info .album-meta {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .epk-album-info p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .epk-stream-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .epk-stream-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold);
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .epk-stream-link:hover {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+
+    /* ── Press quotes ── */
+    .epk-quotes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .epk-quote {
+      background: #111;
+      border-left: 3px solid var(--gold);
+      padding: 2rem;
+    }
+    .epk-quote__text {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .epk-quote__source {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* ── Video ── */
+    .epk-video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    .epk-video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* ── Contact / booking ── */
+    .epk-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .epk-contact-card {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 2rem;
+    }
+    .epk-contact-card h4 {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.75rem;
+    }
+    .epk-contact-card p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .epk-contact-card a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .epk-contact-card a:hover { color: var(--gold); }
+
+    /* ── Download CTA ── */
+    .epk-download-bar {
+      background: var(--gold);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .epk-download-bar h3 {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0a0a0a;
+      margin: 0;
+    }
+    .epk-download-bar p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.6);
+      margin: 0.25rem 0 0;
+    }
+    .epk-btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #0a0a0a;
+      color: var(--gold);
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .epk-btn-dark:hover { opacity: 0.85; }
+
+    /* ── Nav back link ── */
+    .epk-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+    }
+    .epk-nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .epk-nav__logo-badge {
+      background: var(--gold);
+      color: #0a0a0a;
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+    }
+    .epk-nav__page {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .epk-nav__back {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .epk-nav__back:hover { color: var(--gold); }
+    .epk-nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .epk-nav__cta {
+      background: var(--gold);
+      color: #0a0a0a;
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1.2rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .epk-nav__cta:hover { opacity: 0.85; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .epk-hero__content { padding: 2rem 1.5rem; }
+      .epk-section { padding: 3rem 1.5rem; }
+      .epk-section--full { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .epk-bio-grid { grid-template-columns: 1fr; }
+      .epk-photo-stack { flex-direction: row; overflow-x: auto; }
+      .epk-photo-stack img { min-width: 200px; aspect-ratio: 3/4 !important; }
+      .epk-stats { grid-template-columns: repeat(2, 1fr); }
+      .epk-album-grid { grid-template-columns: 1fr; }
+      .epk-album-art { width: 100%; height: 200px; }
+      .epk-quotes { grid-template-columns: 1fr; }
+      .epk-contact-grid { grid-template-columns: 1fr; }
+      .epk-download-bar { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .epk-nav { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body class="epk-body">
+
+  <!-- ── NAV ── -->
+  <nav class="epk-nav">
+    <a href="index.html" class="epk-nav__logo">
+      <span class="epk-nav__logo-badge">PATE</span>
+      <span class="epk-nav__page">Press Kit</span>
+    </a>
+    <div class="epk-nav__actions">
+      <a href="index.html" class="epk-nav__back">← Back to Site</a>
+      <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" class="epk-nav__cta">Stream Now</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="epk-hero">
+    <div class="epk-hero__bg"></div>
+    <div class="epk-hero__content">
+      <div class="epk-badge">Official Press Kit · 2026</div>
+      <h1 class="epk-hero__title">PATE</h1>
+      <p class="epk-hero__sub">Country × Hip-Hop · Houston 072 · SWAT Nation</p>
+      <div class="epk-hero__meta">
+        <span>📍 Houston, TX</span>
+        <span>🎵 Country · Hip-Hop · Southern</span>
+        <span>💿 Album: Growing Up in the 072 – S.W.A.T. Nation (2024)</span>
+        <span>🔗 patemusic.live</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="epk-stats epk-section--full" style="max-width:100%;margin:0;padding:0;">
+    <div class="epk-stat">
+      <span class="epk-stat__num">072</span>
+      <span class="epk-stat__label">Houston Area Code</span>
+    </div>
+    <div class="epk-stat">
+      <span class="epk-stat__num">2024</span>
+      <span class="epk-stat__label">Debut Album Release</span>
+    </div>
+    <div class="epk-stat">
+      <span class="epk-stat__num">4+</span>
+      <span class="epk-stat__label">Streaming Platforms</span>
+    </div>
+    <div class="epk-stat">
+      <span class="epk-stat__num">Indp.</span>
+      <span class="epk-stat__label">Independent Artist</span>
+    </div>
+  </div>
+
+  <!-- ── ARTIST BIO ── -->
+  <section class="epk-section">
+    <span class="epk-label">Artist Biography</span>
+    <h2 class="epk-heading">Houston Born.<br>Two Worlds Fused.</h2>
+    <div class="epk-bio-grid">
+      <div class="epk-bio-text">
+        <p>PATE comes out of Houston's 072, carrying the South's full weight — the country roads, the concrete, the late nights in the booth, and the lessons passed down through real people in real places. He doesn't choose between country and hip-hop because where he's from, there was never a line to begin with.</p>
+        <p>Growing up in the southeast Houston area known as SWAT Nation, PATE absorbed both worlds simultaneously — the twang of country radio bleeding into the bounce of Southern rap, the guitar alongside the 808. That duality isn't a marketing angle; it's the honest product of where he came from.</p>
+        <p>Repping SWAT Nation, PATE moves independently with a crew-first mentality. His debut album <em>"Growing Up in the 072 – S.W.A.T. Nation"</em> (2024) is the statement — a full-length document of his upbringing, his people, and the singular Houston pocket that shaped him. Real music for real places, real moments, real people.</p>
+        <p>PATE's sound sits at the intersection of Lil Boosie's raw Southern storytelling, the warmth of country acoustic, and the trunk-rattling production of Houston's slab culture. Every track is built from lived experience — no gimmick, no costume, just the 072 translated into sound.</p>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+          <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" class="epk-stream-link">▶ Stream Album</a>
+          <a href="https://patemusic.taplink.bio" target="_blank" class="epk-stream-link">🔗 Bio Page</a>
+          <a href="https://www.instagram.com/pate.music" target="_blank" class="epk-stream-link">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <div class="epk-photo-stack">
+          <img src="assets/images/artist_guitar.jpg" alt="PATE playing guitar at studio mic" loading="lazy" />
+          <img src="assets/images/artist_candid.jpg" alt="PATE candid studio moment" loading="lazy" />
+        </div>
+        <p class="epk-photo-caption">Hi-res photos available on request · patemusic.live</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ALBUM ── -->
+  <section class="epk-section" style="background:#0d0d0d;">
+    <span class="epk-label">Latest Release</span>
+    <h2 class="epk-heading">The Album</h2>
+    <div class="epk-album-grid">
+      <div class="epk-album-art">
+        <!-- Album art placeholder — replace src with actual cover when available -->
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="36" stroke="#D4AF37" stroke-width="2"/>
+          <circle cx="40" cy="40" r="24" stroke="#D4AF37" stroke-width="1.5"/>
+          <circle cx="40" cy="40" r="12" stroke="#D4AF37" stroke-width="1"/>
+          <circle cx="40" cy="40" r="4" fill="#D4AF37"/>
+        </svg>
+      </div>
+      <div class="epk-album-info">
+        <h3>Growing Up in the 072<br>– S.W.A.T. Nation</h3>
+        <p class="album-meta">PATE · Full Album · 2024 · Independent</p>
+        <p>A debut statement from Houston's 072 — part country autobiography, part Southern rap declaration. Produced independently and distributed worldwide, the album documents the SWAT Nation experience with raw authenticity: acoustic guitars over rolling 808s, stories about crew, community, and coming up in one of Houston's most distinct pockets.</p>
+        <p>Available on all major streaming platforms with a full music video on YouTube.</p>
+        <div class="epk-stream-links">
+          <a href="https://music.apple.com/us/album/growing-up-in-the-072-s-w-a-t-nation/6773266215" target="_blank" class="epk-stream-link">Apple Music</a>
+          <a href="https://open.spotify.com/playlist/0Xb4WTtvcyiLJ3UJYkY8EU?si=QB80b5xPT6mTfq_-tz_bFw" target="_blank" class="epk-stream-link">Spotify</a>
+          <a href="https://music.amazon.com/albums/B0H2YVPQCP" target="_blank" class="epk-stream-link">Amazon Music</a>
+          <a href="https://youtube.com/playlist?list=OLAK5uy_l5e50O5cHEqzVhxbG8sqvOIA9kxHnq5xU" target="_blank" class="epk-stream-link">YouTube</a>
+          <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" class="epk-stream-link">All Platforms →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIDEO ── -->
+  <section class="epk-section">
+    <span class="epk-label">Featured Video</span>
+    <h2 class="epk-heading">Watch</h2>
+    <div class="epk-video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/PmNR6i_MANs"
+        title="PATE — They Doubled I Doubled (Studio Session)"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p style="font-family:'Satoshi',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.4);margin-top:1rem;letter-spacing:0.05em;">
+      They Doubled I Doubled — Studio Session · <a href="https://youtube.com/channel/UCKrrdkKMDa_H-jcdCAEmTZw" target="_blank" style="color:var(--gold);text-decoration:none;">Subscribe on YouTube →</a>
+    </p>
+  </section>
+
+  <!-- ── PRESS QUOTES ── -->
+  <section class="epk-section" style="background:#0d0d0d;">
+    <span class="epk-label">Press &amp; Reception</span>
+    <h2 class="epk-heading">What They're Saying</h2>
+    <div class="epk-quotes">
+      <div class="epk-quote">
+        <p class="epk-quote__text">"PATE doesn't pick a lane — he owns the whole road. The 072 is coming through loud and clear on every track, and that's exactly what Southern music needs right now."</p>
+        <span class="epk-quote__source">— Independent Review</span>
+      </div>
+      <div class="epk-quote">
+        <p class="epk-quote__text">"A debut that refuses to apologize for where it comes from. Country roads, concrete blocks, and 808s — PATE makes it all one thing."</p>
+        <span class="epk-quote__source">— Music Blog Feature</span>
+      </div>
+      <div class="epk-quote">
+        <p class="epk-quote__text">"The SWAT Nation identity is front and center. This is Houston music with real teeth — crew-first, community-rooted, and built to last."</p>
+        <span class="epk-quote__source">— Regional Music Coverage</span>
+      </div>
+      <div class="epk-quote">
+        <p class="epk-quote__text">"PATE sits in a unique pocket — Lil Boosie's rawness meets country's warmth, filtered through the specific gravity of the Houston 072. That's a lane nobody else is occupying."</p>
+        <span class="epk-quote__source">— Artist Profile</span>
+      </div>
+    </div>
+    <p style="font-family:'Satoshi',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.25);margin-top:1.5rem;font-style:italic;">
+      *Press quotes are representative of the artist's positioning. Replace with actual verified press coverage as it becomes available.
+    </p>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section class="epk-section">
+    <span class="epk-label">Press Photos</span>
+    <h2 class="epk-heading">Media Assets</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <img src="assets/images/artist_guitar.jpg" alt="PATE — guitar at studio mic" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;display:block;" />
+      <img src="assets/images/artist_studio.jpg" alt="PATE — studio wide shot" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;display:block;" />
+      <img src="assets/images/artist_candid.jpg" alt="PATE — candid studio moment" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center top;display:block;" />
+    </div>
+    <p style="font-family:'Satoshi',sans-serif;font-size:0.82rem;color:rgba(255,255,255,0.35);margin-top:1rem;letter-spacing:0.04em;">
+      Hi-resolution versions available upon request. Contact for download access.
+    </p>
+  </section>
+
+  <!-- ── CONTACT / BOOKING ── -->
+  <section class="epk-section" style="background:#0d0d0d;">
+    <span class="epk-label">Contact &amp; Booking</span>
+    <h2 class="epk-heading">Get in Touch</h2>
+    <div class="epk-contact-grid">
+      <div class="epk-contact-card">
+        <h4>General / Press</h4>
+        <p>For press inquiries, interviews, and media requests contact via Instagram DM or the bio page.</p>
+        <p style="margin-top:0.75rem;"><a href="https://www.instagram.com/pate.music" target="_blank">@pate.music</a></p>
+      </div>
+      <div class="epk-contact-card">
+        <h4>Booking</h4>
+        <p>For show bookings, features, and performance requests reach out directly through social channels or the artist bio page.</p>
+        <p style="margin-top:0.75rem;"><a href="https://patemusic.taplink.bio" target="_blank">patemusic.taplink.bio</a></p>
+      </div>
+      <div class="epk-contact-card">
+        <h4>All Links</h4>
+        <p>Streaming, socials, and more in one place.</p>
+        <p style="margin-top:0.75rem;">
+          <a href="https://open.spotify.com/user/3136dwxv7y5mxdcffjxxp2nw2twa" target="_blank">Spotify</a> ·
+          <a href="https://music.apple.com/us/artist/pate/6771612574" target="_blank">Apple Music</a> ·
+          <a href="https://youtube.com/channel/UCKrrdkKMDa_H-jcdCAEmTZw" target="_blank">YouTube</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOWNLOAD BAR ── -->
+  <div class="epk-download-bar">
+    <div>
+      <h3>Stream "Growing Up in the 072"</h3>
+      <p>Available now on Spotify, Apple Music, Amazon Music, and YouTube</p>
+    </div>
+    <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" class="epk-btn-dark">
+      ▶ Stream Now
+    </a>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer style="background:#0a0a0a;border-top:1px solid rgba(212,175,55,0.1);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <span style="background:var(--gold);color:#0a0a0a;font-family:'Clash Display',sans-serif;font-weight:700;font-size:0.85rem;padding:0.3rem 0.7rem;margin-right:1rem;">PATE</span>
+      <span style="font-family:'Satoshi',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">Country × Hip-Hop from Houston's 072</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <a href="index.html" style="font-family:'Satoshi',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:0.05em;">← Main Site</a>
+      <span style="font-family:'Satoshi',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.2);">© 2026 PATE · SWAT Nation · Houston 072</span>
+    </div>
+  </footer>
+
+</body>
+</html>
