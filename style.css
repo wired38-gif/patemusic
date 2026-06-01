@@ -607,6 +607,91 @@ body {
   gap: 0.8rem;
 }
 
+/* ─── INSPIRE BY J MICHAELS ─── */
+.inspire-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 10vw, 10rem) clamp(2rem, 6vw, 8rem);
+}
+.inspire-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.inspire-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+.inspire-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.65) 50%,
+    rgba(0,0,0,0.82) 100%
+  );
+}
+.inspire-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.inspire-logo {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+  margin-bottom: 1.5rem;
+  filter: invert(1);
+}
+.inspire-tagline {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.inspire-copy {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+  max-width: 52ch;
+}
+.inspire-cta {
+  display: inline-block;
+}
+.inspire-lookbook {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.2);
+}
+.inspire-lookbook img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-out);
+}
+.inspire-lookbook:hover img { transform: scale(1.03); }
+
+@media (max-width: 800px) {
+  .inspire-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .inspire-logo { max-width: 280px; }
+}
+
 /* ─── CONNECT ─── */
 .connect-section {
   background: var(--black);
