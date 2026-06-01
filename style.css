@@ -607,6 +607,160 @@ body {
   gap: 0.8rem;
 }
 
+/* ─── VENUE CAROUSEL ─── */
+.venue-carousel {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 480px;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 5rem;
+}
+.vc-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 1;
+}
+.vc-slide.vc-active {
+  opacity: 1;
+  z-index: 2;
+}
+.vc-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vc-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.15) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem clamp(1.5rem, 5vw, 5rem);
+}
+.vc-text {
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+.vc-location {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  min-height: 1em;
+  transition: opacity 0.4s;
+}
+.vc-name {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(1.4rem, 3vw, 2.5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  min-height: 1.2em;
+  transition: opacity 0.4s;
+}
+.vc-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.3vw, 0.95rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  max-width: 55ch;
+  min-height: 3em;
+  transition: opacity 0.4s;
+}
+.vc-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  min-height: 1.5em;
+  transition: opacity 0.4s;
+}
+.vc-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.vc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.vc-dot.active {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+.vc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  font-size: 1.2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.vc-arrow:hover { background: rgba(212,175,55,0.25); border-color: var(--gold); }
+.vc-prev { left: 1.5rem; }
+.vc-next { right: 1.5rem; }
+
+/* ─── BRAND PARTNERS ─── */
+.inspire-section-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.inspire-inner-flip {
+  flex-direction: row-reverse;
+}
+.brand-divider {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 3rem auto;
+  height: 1px;
+  background: rgba(212,175,55,0.2);
+}
+.inspire-brand-name {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
 /* ─── INSPIRE BY J MICHAELS ─── */
 .inspire-section {
   position: relative;

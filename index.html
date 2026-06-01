@@ -347,81 +347,50 @@
         <p class="venues-sub">PATE didn't pick his sound off a playlist. He lived it — two-stepping at Wild West on a Friday, then crossing town to Club 6400 before the night was over. Houston was the only city where you could do that. Country floors and hip-hop floors in the same zip code, the same night, the same people.</p>
       </div>
 
-      <!-- Truck + dance floors row -->
-      <div class="venues-visual-row">
-        <div class="venues-img-block venues-img-wide">
-          <img src="assets/images/houston_truck.png" alt="Lifted Texas truck at sunset on a country road" loading="lazy" />
-          <span class="venues-img-caption">The Texas Way</span>
-        </div>
-        <div class="venues-img-block">
-          <img src="assets/images/country_dance_floor.png" alt="Packed country western dance hall, couples two-stepping under neon" loading="lazy" />
-          <span class="venues-img-caption">Country Dance Hall</span>
-        </div>
-        <div class="venues-img-block">
-          <img src="assets/images/urban_club_floor.png" alt="90s Houston urban nightclub packed dance floor with mirror ball" loading="lazy" />
-          <span class="venues-img-caption">Urban Nights</span>
-        </div>
-      </div>
+      <!-- Cinematic venue carousel -->
+      <div class="venue-carousel" id="venueCarousel">
 
-      <!-- Venue cards grid -->
-      <div class="venues-grid">
-
-        <div class="venue-card">
-          <div class="venue-card-img">
-            <img src="assets/images/club_6400.jpg" alt="Club 6400 Houston 25th Anniversary" loading="lazy" />
-          </div>
-          <div class="venue-card-body">
-            <span class="venue-tag">Richmond Ave</span>
-            <h3 class="venue-name">Club 6400</h3>
-            <p class="venue-desc">An iconic mega-club on Richmond Ave — massive dance floors, high-energy DJ sets, and a permanent address in Houston 90s nightlife history. If you were out, you ended up here.</p>
-          </div>
+        <div class="vc-slide vc-active" data-label="The Texas Way" data-location="" data-name="" data-desc="">
+          <img src="assets/images/houston_truck.png" alt="Lifted Texas truck at sunset on a country road" />
+        </div>
+        <div class="vc-slide" data-label="Country Dance Hall" data-location="" data-name="" data-desc="">
+          <img src="assets/images/country_dance_floor.png" alt="Packed country western dance hall" />
+        </div>
+        <div class="vc-slide" data-label="Urban Nights" data-location="" data-name="" data-desc="">
+          <img src="assets/images/urban_club_floor.png" alt="90s Houston urban nightclub dance floor" />
+        </div>
+        <div class="vc-slide" data-location="Richmond Ave" data-name="Club 6400" data-desc="An iconic mega-club on Richmond Ave — massive dance floors, high-energy DJ sets, and a permanent address in Houston 90s nightlife history. If you were out, you ended up here." data-label="">
+          <img src="assets/images/club_6400.jpg" alt="Club 6400 Houston" />
+        </div>
+        <div class="vc-slide" data-location="Long Point → Westheimer" data-name="Wild West" data-desc="Houston's premier country-western dance spot. Started on Long Point, moved to Westheimer, but the two-step never stopped. Where boots hit hardwood and the city forgot it had a skyline." data-label="">
+          <img src="assets/images/wild_west_1.jpg" alt="Wild West Houston" />
+        </div>
+        <div class="vc-slide" data-location="Montrose · Since 1978" data-name="Numbers Night Club" data-desc="The ultimate Montrose institution. Classic Numbers Fridays launched in 1991 and never stopped — industrial, goth, new wave. Proof that Houston never fit one category." data-label="">
+          <img src="assets/images/numbers_club.jpg" alt="Numbers Nightclub Houston" />
+        </div>
+        <div class="vc-slide" data-location="Galleria Area" data-name="The Roxy" data-desc="Before streaming, before downloads, people recorded live DJ sets from 104.1 KRBE onto cassette tapes right here. Houston's club culture and radio culture in one room." data-label="" style="background:#111;">
+          <img src="assets/images/urban_club_floor.png" alt="The Roxy Houston" style="opacity:0.4;filter:hue-rotate(180deg);" />
+        </div>
+        <div class="vc-slide" data-location="Richmond Ave" data-name="City Streets" data-desc="A massive complex with multiple rooms, each playing a different style. Country to hip-hop to freestyle in one building. That was Houston — no walls between the sounds." data-label="" style="background:#0a0a0a;">
+          <img src="assets/images/country_dance_floor.png" alt="City Streets Houston" style="opacity:0.35;" />
         </div>
 
-        <div class="venue-card">
-          <div class="venue-card-img venue-card-img-dark">
-            <img src="assets/images/wild_west_1.jpg" alt="Wild West Houston country western dance club" loading="lazy" />
+        <!-- Overlay text -->
+        <div class="vc-overlay">
+          <div class="vc-text">
+            <span class="vc-location" id="vcLocation"></span>
+            <h3 class="vc-name" id="vcName"></h3>
+            <p class="vc-desc" id="vcDesc"></p>
           </div>
-          <div class="venue-card-body">
-            <span class="venue-tag">Long Point → Westheimer</span>
-            <h3 class="venue-name">Wild West</h3>
-            <p class="venue-desc">Houston's premier country-western dance spot. Started on Long Point and Gessner, moved to Westheimer, but the two-step never stopped. Where boots hit hardwood and the city forgot it had a skyline.</p>
-          </div>
+          <div class="vc-label" id="vcLabel"></div>
         </div>
 
-        <div class="venue-card">
-          <div class="venue-card-img">
-            <img src="assets/images/numbers_club.jpg" alt="Numbers Nightclub Houston Montrose" loading="lazy" />
-          </div>
-          <div class="venue-card-body">
-            <span class="venue-tag">Montrose · Since 1978</span>
-            <h3 class="venue-name">Numbers Night Club</h3>
-            <p class="venue-desc">The ultimate Montrose institution. In 1991, Classic Numbers Fridays launched and never stopped — industrial, goth, new wave, and everything in between. Proof that Houston never fit one category.</p>
-          </div>
-        </div>
+        <!-- Nav dots -->
+        <div class="vc-dots" id="vcDots"></div>
 
-        <div class="venue-card venue-card-text">
-          <div class="venue-card-body">
-            <span class="venue-tag">Galleria Area</span>
-            <h3 class="venue-name">The Roxy</h3>
-            <p class="venue-desc">Before streaming, before downloads, people recorded live DJ sets from 104.1 KRBE onto cassette tapes right here. The Roxy was where Houston's club culture and radio culture collided into something real.</p>
-          </div>
-        </div>
-
-        <div class="venue-card venue-card-text">
-          <div class="venue-card-body">
-            <span class="venue-tag">Richmond Ave</span>
-            <h3 class="venue-name">City Streets</h3>
-            <p class="venue-desc">A massive entertainment complex with multiple bars and rooms, each playing a different style. You could walk from country to hip-hop to freestyle in one building. That was Houston — no walls between the sounds.</p>
-          </div>
-        </div>
-
-        <div class="venue-card venue-card-text">
-          <div class="venue-card-body">
-            <span class="venue-tag">Tower Theater</span>
-            <h3 class="venue-name">Decadance</h3>
-            <p class="venue-desc">Built inside the historic Tower Theater, Decadance brought disco and dance culture into a building that had seen everything. Houston has always known how to repurpose a room without losing what made it sacred.</p>
-          </div>
-        </div>
+        <!-- Arrows -->
+        <button class="vc-arrow vc-prev" id="vcPrev" aria-label="Previous">&#8592;</button>
+        <button class="vc-arrow vc-next" id="vcNext" aria-label="Next">&#8594;</button>
 
       </div>
 
@@ -494,7 +463,7 @@
       </div>
     </section>
 
-    <!-- ───── INSPIRE BY J MICHAELS — brand partner ───── -->
+    <!-- ───── BRAND PARTNERS ───── -->
     <section class="inspire-section">
 
       <!-- I-10 video background -->
@@ -505,23 +474,40 @@
         <div class="inspire-video-overlay"></div>
       </div>
 
-      <div class="inspire-inner">
+      <div class="inspire-section-header">
+        <p class="panel-eyebrow">Moving With</p>
+        <h2 class="venues-title" style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:0;">Brand Partners</h2>
+      </div>
 
-        <!-- Left: brand identity -->
+      <!-- Inspire -->
+      <div class="inspire-inner">
         <div class="inspire-brand">
-          <p class="panel-eyebrow">Brand Partner</p>
           <img src="assets/images/inspire_logo.jpg" alt="Inspire by J Michaels — Est. 2024" class="inspire-logo" loading="lazy" />
           <p class="inspire-tagline">Learn. Live. Love to Inspire.</p>
-          <p class="inspire-copy">Designing Success &amp; Inspiring Change. LTIbyJMichael leads the Learn, Live, and Love to Inspire movement — empowering individuals and uplifting communities through purposeful design and transformative experiences. Fueling creativity, cultivating confidence, and inspiring lasting impact.</p>
+          <p class="inspire-copy">A creative force empowering individuals and uplifting communities through purposeful design and transformative experiences. LTIbyJMichael fuels creativity, cultivates confidence, and inspires lasting impact — Est. 2024.</p>
           <a href="https://www.ltibyjmichael.com" target="_blank" rel="noopener" class="btn-outline-white inspire-cta">Shop Inspire</a>
         </div>
-
-        <!-- Right: lookbook visual -->
         <div class="inspire-lookbook">
-          <img src="assets/images/inspire_lookbook.jpg" alt="Inspire by J Michaels streetwear lookbook — bold graphic designs" loading="lazy" />
+          <img src="assets/images/inspire_lookbook.jpg" alt="Inspire by J Michaels streetwear lookbook" loading="lazy" />
         </div>
-
       </div>
+
+      <!-- Divider -->
+      <div class="brand-divider"></div>
+
+      <!-- Designs by MYK -->
+      <div class="inspire-inner inspire-inner-flip">
+        <div class="inspire-lookbook">
+          <img src="assets/images/designs_myk.jpg" alt="Designs by MYK LLC — digital creative solutions for musicians" loading="lazy" />
+        </div>
+        <div class="inspire-brand">
+          <p class="inspire-brand-name">Designs by MYK LLC</p>
+          <p class="inspire-tagline">Creative Solutions for Creators.</p>
+          <p class="inspire-copy">A creative solutions partner specializing in innovative digital design, software, and tools tailored for musicians, artists, and entrepreneurs. Empowering creatives with streamlined, high-quality resources that elevate branding, productivity, and growth.</p>
+          <a href="mailto:Publicist@Patemusic.live" class="btn-outline-white inspire-cta">Connect with MYK</a>
+        </div>
+      </div>
+
     </section>
 
 
