@@ -134,11 +134,11 @@ body {
   font-size: 0.68rem;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: var(--white);
   transition: color var(--t-fast) var(--ease-out);
 }
 .nav-left a:hover,
-.nav-right-links a:hover { color: var(--white); }
+.nav-right-links a:hover { color: var(--gold); }
 
 /* Right nav */
 .nav-right-links {
@@ -580,7 +580,7 @@ body {
   font-weight: 300;
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
   line-height: 1.75;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.88);
   margin-bottom: 1.2rem;
   max-width: 60ch;
 }
@@ -597,8 +597,8 @@ body {
   font-size: 0.6rem;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.4);
   padding: 0.35rem 0.9rem;
 }
 .about-ctas {
@@ -831,6 +831,20 @@ body {
   20%, 80%  { opacity: 1; }
 }
 
+/* ─── GLOBAL CLOUDY DRIFT VIDEO BACKGROUND ─── */
+.global-cloudy-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.global-cloudy-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+}
+
 /* ─── CLOUDY DRIFT INTERLUDE ─── */
 .cloudy-interlude {
   position: relative;
@@ -839,24 +853,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.cloudy-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.55;
-}
-.cloudy-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.7) 0%,
-    rgba(0,0,0,0.3) 50%,
-    rgba(0,0,0,0.7) 100%
-  );
+  background: transparent;
 }
 .cloudy-text {
   position: relative;
@@ -873,7 +870,7 @@ body {
   font-size: clamp(0.7rem, 1.5vw, 0.85rem);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
+  color: var(--gold);
   animation: text-drift 6s ease-in-out infinite;
 }
 .cloudy-text span:nth-child(3) { animation-delay: 0.3s; }
@@ -937,7 +934,7 @@ body {
   font-size: clamp(0.65rem, 1.2vw, 0.8rem);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: var(--gold);
 }
 @keyframes neon-pulse {
   0%, 100% { text-shadow: 0 0 30px rgba(255,160,50,0.5), 0 0 60px rgba(255,100,0,0.25); }

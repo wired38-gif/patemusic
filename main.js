@@ -134,7 +134,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     ytPlayer = new window.YT.Player('yt-audio-frame', {
       events: {
         onReady: function(e) {
-          e.target.setVolume(5);
+          e.target.setVolume(10);
         }
       }
     });
