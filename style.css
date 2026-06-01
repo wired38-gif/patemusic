@@ -788,3 +788,262 @@ body {
   .stream-cta { flex-direction: column; }
   .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
 }
+
+/* ─── COLOR DEFINITION ENHANCEMENTS ─── */
+:root {
+  --neon-gold:  #FFD700;
+  --neon-amber: #FF9500;
+  --blue-cool:  #1a3a5c;
+  --teal-hint:  rgba(0, 180, 160, 0.15);
+}
+
+/* Subtle gold glow on section dividers */
+.album-panel,
+.neon-panel,
+.about-section {
+  box-shadow: inset 0 1px 0 rgba(212,175,55,0.12);
+}
+
+/* Gold line accent on ticker */
+.ticker-bar {
+  border-bottom: 1px solid rgba(212,175,55,0.4);
+}
+
+/* Colored accent on photo strip quote card */
+.strip-text-card {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+}
+
+/* ─── HERO DUAL IMAGE — cross-fade ─── */
+.hero-img-alt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  animation: hero-crossfade 12s ease-in-out 4s infinite;
+  opacity: 0;
+}
+@keyframes hero-crossfade {
+  0%, 100% { opacity: 0; }
+  20%, 80%  { opacity: 1; }
+}
+
+/* ─── CLOUDY DRIFT INTERLUDE ─── */
+.cloudy-interlude {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cloudy-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+.cloudy-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.7) 0%,
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.7) 100%
+  );
+}
+.cloudy-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cloudy-text span {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  animation: text-drift 6s ease-in-out infinite;
+}
+.cloudy-text span:nth-child(3) { animation-delay: 0.3s; }
+.cloudy-text span:nth-child(5) { animation-delay: 0.6s; }
+.cloudy-sep {
+  color: var(--gold) !important;
+  animation: none !important;
+  opacity: 0.6;
+}
+@keyframes text-drift {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* ─── SWAT NATION NEON PANEL ─── */
+.neon-panel {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.neon-panel-bg {
+  position: absolute;
+  inset: 0;
+}
+.neon-panel-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 8s var(--ease-out);
+}
+.neon-panel:hover .neon-panel-bg img {
+  transform: scale(1.04);
+}
+.neon-panel-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+.neon-panel-title {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow:
+    0 0 40px rgba(255, 160, 50, 0.6),
+    0 0 80px rgba(255, 100, 0, 0.3);
+  margin-bottom: 0.3rem;
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+.neon-panel-sub {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 0 0 30px rgba(255,160,50,0.5), 0 0 60px rgba(255,100,0,0.25); }
+  50%       { text-shadow: 0 0 50px rgba(255,180,60,0.8), 0 0 100px rgba(255,120,0,0.4); }
+}
+
+/* ─── MOTION — scroll-reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+
+/* ─── CONNECT LINK GOLD HOVER ─── */
+.connect-link:hover .cl-platform {
+  color: var(--gold);
+}
+
+/* ─── MUSIC PLAYER ─── */
+.music-player {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 999;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212,175,55,0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  transition: opacity var(--t-mid), transform var(--t-mid);
+  max-width: 280px;
+}
+.music-player.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+.mp-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.mp-btn:hover {
+  background: rgba(212,175,55,0.15);
+  border-color: var(--gold);
+}
+.mp-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.mp-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp-artist {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.mp-vol input[type="range"] {
+  width: 52px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.mp-close {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1;
+  padding: 0 0.2rem;
+  transition: color var(--t-fast);
+}
+.mp-close:hover { color: var(--white); }
+
+@media (max-width: 480px) {
+  .music-player { bottom: 1rem; left: 1rem; max-width: calc(100vw - 2rem); }
+  .cloudy-interlude { height: 180px; }
+  .neon-panel { height: 45vh; min-height: 280px; }
+}

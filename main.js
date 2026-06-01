@@ -84,3 +84,90 @@
   });
 
 })();
+
+// ── Scroll reveal ────────────────────────
+document.querySelectorAll(
+  '.panel-title, .panel-eyebrow, .panel-sub, .panel-actions, .about-title, .about-copy, .about-tags, .connect-title, .gp-label, .gp-caption, .neon-panel-title, .neon-panel-sub'
+).forEach((el, i) => {
+  el.classList.add('reveal');
+  if (i % 3 === 1) el.classList.add('reveal-delay-1');
+  if (i % 3 === 2) el.classList.add('reveal-delay-2');
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Music Player ─────────────────────────
+(function() {
+  const player  = document.getElementById('music-player');
+  const toggle  = document.getElementById('mp-toggle');
+  const closer  = document.getElementById('mp-close');
+  const volSldr = document.getElementById('mp-volume');
+  const playIco = toggle && toggle.querySelector('.mp-play');
+  const pauseIco= toggle && toggle.querySelector('.mp-pause');
+
+  // Use YouTube embed audio via a hidden iframe as Spotify requires OAuth
+  // Instead wire to a direct DistroKid preview or YouTube IFrame API
+  // For now create a silent placeholder that prompts Spotify open
+  if (!player || !toggle) return;
+
+  let playing = false;
+
+  // Try to use the YouTube iframe API for audio
+  const ytFrame = document.createElement('iframe');
+  ytFrame.src = 'https://www.youtube.com/embed/PmNR6i_MANs?enablejsapi=1&autoplay=0&controls=0&loop=1&playlist=PmNR6i_MANs';
+  ytFrame.allow = 'autoplay; encrypted-media';
+  ytFrame.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
+  ytFrame.id = 'yt-audio-frame';
+  document.body.appendChild(ytFrame);
+
+  let ytPlayer = null;
+  window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new window.YT.Player('yt-audio-frame', {
+      events: {
+        onReady: function(e) {
+          e.target.setVolume(5);
+        }
+      }
+    });
+  };
+
+  // Load YouTube API
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  toggle.addEventListener('click', () => {
+    if (!ytPlayer) return;
+    if (!playing) {
+      ytPlayer.playVideo();
+      playing = true;
+      if (playIco) playIco.style.display = 'none';
+      if (pauseIco) pauseIco.style.display = '';
+      toggle.setAttribute('aria-label', 'Pause background music');
+    } else {
+      ytPlayer.pauseVideo();
+      playing = false;
+      if (playIco) playIco.style.display = '';
+      if (pauseIco) pauseIco.style.display = 'none';
+      toggle.setAttribute('aria-label', 'Play background music');
+    }
+  });
+
+  volSldr && volSldr.addEventListener('input', () => {
+    if (ytPlayer) ytPlayer.setVolume(parseInt(volSldr.value));
+  });
+
+  closer && closer.addEventListener('click', () => {
+    if (ytPlayer && playing) ytPlayer.pauseVideo();
+    player.classList.add('hidden');
+  });
+})();

@@ -200,6 +200,7 @@
     <section class="hero" id="hero">
       <div class="hero-bg">
         <img src="assets/images/hero.jpg" alt="PATE — Houston artist looking up from behind DJ decks" class="hero-img" fetchpriority="high" />
+        <img src="assets/images/pate_cowboy_hat.jpg" alt="PATE — cowboy hat dramatic portrait" class="hero-img hero-img-alt" aria-hidden="true" />
         <div class="hero-vignette"></div>
       </div>
       <!-- Minimal scroll cue, bottom right -->
@@ -237,8 +238,33 @@
         <div class="strip-item">
           <img src="assets/images/guitar_closeup.png" alt="Acoustic guitar strings close-up" loading="lazy" />
         </div>
+        <div class="strip-item">
+          <img src="assets/images/overstimulated_art.jpg" alt="Overstimulated — single art" loading="lazy" />
+        </div>
+        <div class="strip-item">
+          <img src="assets/images/boot_horizon.jpg" alt="Cowboy boot at sunset horizon" loading="lazy" />
+        </div>
+        <div class="strip-item">
+          <img src="assets/images/pate_mic_blue.jpg" alt="PATE at the mic with blue studio light" loading="lazy" />
+        </div>
       </div>
     </section>
+
+
+    <!-- ───── CLOUDY DRIFT INTERLUDE ───── -->
+    <div class="cloudy-interlude" aria-hidden="true">
+      <video autoplay muted loop playsinline class="cloudy-video">
+        <source src="assets/cloudy_drift.mp4" type="video/mp4" />
+      </video>
+      <div class="cloudy-overlay"></div>
+      <div class="cloudy-text">
+        <span>Country × Hip-Hop</span>
+        <span class="cloudy-sep">—</span>
+        <span>Houston 072</span>
+        <span class="cloudy-sep">—</span>
+        <span>SWAT Nation</span>
+      </div>
+    </div>
 
     <!-- ───── MUSIC — full-bleed album panel ───── -->
     <section class="album-panel" id="music">
@@ -307,6 +333,19 @@
         </div>
       </div>
 
+    </section>
+
+
+    <!-- ───── SWAT NATION NEON PANEL ───── -->
+    <section class="neon-panel">
+      <div class="neon-panel-bg">
+        <img src="assets/images/swat_nation_neon.jpg" alt="SWAT Nation neon sign in the studio" loading="lazy" />
+      </div>
+      <div class="neon-panel-content">
+        <p class="panel-eyebrow">The Sound. The Place.</p>
+        <h2 class="neon-panel-title">SWAT Nation</h2>
+        <p class="neon-panel-sub">Southeast Houston · 072 · Independent</p>
+      </div>
     </section>
 
     <!-- ───── ABOUT — dark cinematic with candid hero ───── -->
@@ -398,6 +437,27 @@
       <p class="footer-legal">© 2026 PATE · SWAT Nation · Houston 072 · All rights reserved</p>
     </div>
   </footer>
+
+
+  <!-- ───── AMBIENT MUSIC PLAYER ───── -->
+  <div class="music-player" id="music-player" aria-label="Background music player">
+    <audio id="ambient-audio" loop preload="none">
+      <!-- Track from PATE's album — Growing Up in the 072 -->
+      <source src="https://open.spotify.com/track/0Xb4WTtvcyiLJ3UJYkY8EU" type="audio/mpeg" />
+    </audio>
+    <button class="mp-btn" id="mp-toggle" aria-label="Play background music" title="Play ambient music">
+      <svg class="mp-icon mp-play" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="mp-icon mp-pause" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <div class="mp-info">
+      <span class="mp-title">Growing Up in the 072</span>
+      <span class="mp-artist">PATE</span>
+    </div>
+    <div class="mp-vol">
+      <input type="range" id="mp-volume" min="0" max="100" value="5" aria-label="Volume" />
+    </div>
+    <button class="mp-close" id="mp-close" aria-label="Dismiss player">×</button>
+  </div>
 
   <script src="main.js"></script>
 </body>
