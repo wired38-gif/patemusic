@@ -642,7 +642,7 @@ body {
   border-right: 1px solid rgba(255,255,255,0.04);
   transition: background var(--t-fast);
 }
-.connect-link:hover { background: rgba(255,255,255,0.03); }
+.connect-link:hover { background: rgba(255,255,255,0.06); }
 .cl-platform {
   font-family: var(--font-display);
   font-weight: 300;
@@ -656,16 +656,16 @@ body {
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.85);
   flex: 1;
 }
 .cl-arrow {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.55);
   transition: color var(--t-fast), transform var(--t-fast);
 }
 .connect-link:hover .cl-arrow {
-  color: var(--white);
+  color: var(--gold);
   transform: translateX(4px);
 }
 .stream-cta {
