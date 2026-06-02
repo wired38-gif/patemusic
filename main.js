@@ -106,71 +106,147 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ── Music Player ─────────────────────────
-(function() {
-  const player  = document.getElementById('music-player');
-  const toggle  = document.getElementById('mp-toggle');
-  const closer  = document.getElementById('mp-close');
-  const volSldr = document.getElementById('mp-volume');
-  const playIco = toggle && toggle.querySelector('.mp-play');
-  const pauseIco= toggle && toggle.querySelector('.mp-pause');
+// PATE track list — YouTube IDs paired with Spotify links + titles
+// NOTE: Browsers block audio autoplay until first user interaction.
+// We trigger play on the first click/touch/keydown anywhere on the page.
+const PATE_TRACKS = [
+  {
+    ytId:    'PmNR6i_MANs',
+    title:   'They Doubled I Doubled',
+    spotify: 'https://open.spotify.com/playlist/0Xb4WTtvcyiLJ3UJYkY8EU'
+  }
+];
+let _trackIdx = 0;
 
-  // Use YouTube embed audio via a hidden iframe as Spotify requires OAuth
-  // Instead wire to a direct DistroKid preview or YouTube IFrame API
-  // For now create a silent placeholder that prompts Spotify open
+(function () {
+  const player    = document.getElementById('music-player');
+  const toggle    = document.getElementById('mp-toggle');
+  const closer    = document.getElementById('mp-close');
+  const volSldr   = document.getElementById('mp-volume');
+  const titleEl   = document.getElementById('mp-title-text');
+  const spotifyEl = document.getElementById('mp-spotify-link');
+  const playIco   = toggle && toggle.querySelector('.mp-play');
+  const pauseIco  = toggle && toggle.querySelector('.mp-pause');
+
   if (!player || !toggle) return;
 
-  let playing = false;
+  let playing    = false;
+  let ytPlayer   = null;
+  let autoPlayed = false;
 
-  // Try to use the YouTube iframe API for audio
-  const ytFrame = document.createElement('iframe');
-  ytFrame.src = 'https://www.youtube.com/embed/PmNR6i_MANs?enablejsapi=1&autoplay=0&controls=0&loop=1&playlist=PmNR6i_MANs';
-  ytFrame.allow = 'autoplay; encrypted-media';
-  ytFrame.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
-  ytFrame.id = 'yt-audio-frame';
+  function setTrack(idx) {
+    const t = PATE_TRACKS[idx];
+    if (titleEl)   titleEl.textContent = t.title;
+    if (spotifyEl) spotifyEl.href      = t.spotify;
+  }
+  setTrack(0);
+
+  function showPause() {
+    if (playIco)  playIco.style.display  = 'none';
+    if (pauseIco) pauseIco.style.display = '';
+    toggle.setAttribute('aria-label', 'Pause music');
+    playing = true;
+  }
+  function showPlay() {
+    if (playIco)  playIco.style.display  = '';
+    if (pauseIco) pauseIco.style.display = 'none';
+    toggle.setAttribute('aria-label', 'Play music');
+    playing = false;
+  }
+
+  // Build hidden YouTube iframe (1x1 off-screen — audio only)
+  const trackId  = PATE_TRACKS[0].ytId;
+  const ytFrame  = document.createElement('iframe');
+  ytFrame.id     = 'yt-audio-frame';
+  ytFrame.title  = 'PATE ambient audio player';
+  ytFrame.src    = 'https://www.youtube.com/embed/' + trackId
+                 + '?enablejsapi=1&autoplay=0&controls=0&loop=1&playlist=' + trackId
+                 + '&origin=' + location.origin;
+  ytFrame.allow  = 'autoplay; encrypted-media';
+  ytFrame.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
   document.body.appendChild(ytFrame);
 
-  let ytPlayer = null;
-  window.onYouTubeIframeAPIReady = function() {
+  // YouTube IFrame API callback
+  window.onYouTubeIframeAPIReady = function () {
     ytPlayer = new window.YT.Player('yt-audio-frame', {
       events: {
-        onReady: function(e) {
+        onReady: function (e) {
           e.target.setVolume(40);
+          // If user already gestured before API finished loading, play now
+          if (autoPlayed) {
+            e.target.playVideo();
+            showPause();
+          }
+        },
+        onStateChange: function (e) {
+          // Loop to next track when ended
+          if (e.data === window.YT.PlayerState.ENDED) {
+            _trackIdx = (_trackIdx + 1) % PATE_TRACKS.length;
+            setTrack(_trackIdx);
+            ytPlayer.loadVideoById(PATE_TRACKS[_trackIdx].ytId);
+          }
         }
       }
     });
   };
 
-  // Load YouTube API
-  const tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
+  // Load YouTube IFrame API script once
+  if (!document.getElementById('yt-api-script')) {
+    const tag = document.createElement('script');
+    tag.id    = 'yt-api-script';
+    tag.src   = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  }
 
-  toggle.addEventListener('click', () => {
+  // ── Auto-play on first user gesture ──────
+  // Browser policy: audio needs a user gesture before it can play.
+  // We listen for the first click/touch/keydown anywhere, then auto-start.
+  function onFirstGesture() {
+    if (autoPlayed) return;
+    autoPlayed = true;
+    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      ytPlayer.playVideo();
+      showPause();
+    }
+    // If API not ready yet, the onReady handler will catch it via autoPlayed flag
+  }
+  document.addEventListener('click',      onFirstGesture, { once: true });
+  document.addEventListener('touchstart', onFirstGesture, { once: true, passive: true });
+  document.addEventListener('keydown',    onFirstGesture, { once: true });
+
+  // ── Manual play/pause toggle ─────────────
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation(); // prevent double-firing onFirstGesture
     if (!ytPlayer) return;
     if (!playing) {
       ytPlayer.playVideo();
-      playing = true;
-      if (playIco) playIco.style.display = 'none';
-      if (pauseIco) pauseIco.style.display = '';
-      toggle.setAttribute('aria-label', 'Pause background music');
+      showPause();
     } else {
       ytPlayer.pauseVideo();
-      playing = false;
-      if (playIco) playIco.style.display = '';
-      if (pauseIco) pauseIco.style.display = 'none';
-      toggle.setAttribute('aria-label', 'Play background music');
+      showPlay();
     }
   });
 
-  volSldr && volSldr.addEventListener('input', () => {
+  // ── Volume slider ────────────────────────
+  volSldr && volSldr.addEventListener('input', function () {
     if (ytPlayer) ytPlayer.setVolume(parseInt(volSldr.value));
   });
 
-  closer && closer.addEventListener('click', () => {
+  // ── Close / dismiss player ───────────────
+  closer && closer.addEventListener('click', function () {
     if (ytPlayer && playing) ytPlayer.pauseVideo();
     player.classList.add('hidden');
   });
-})();
+}());
+
+// ── Email signup handler ──────────────────
+function handleEmailSignup(e) {
+  e.preventDefault();
+  const form    = document.getElementById('email-signup-form');
+  const confirm = document.getElementById('email-confirm');
+  if (form)    form.style.display    = 'none';
+  if (confirm) confirm.style.display = 'block';
+}
 
 /* ────────────────────────────────────────
    VENUE CAROUSEL
