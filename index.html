@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PATE | Country × Hip-Hop Artist | Houston 072 | SWAT Nation</title>
   <meta name="description" content="PATE is a Country × Hip-Hop artist from Houston's 072. Stream debut album 'Growing Up in the 072 – S.W.A.T. Nation' on Spotify, Apple Music, Amazon & YouTube." />
-  <meta name="keywords" content="PATE, Houston rapper, country hip hop, 072, SWAT Nation, Houston 072, Growing Up in the 072, Houston music, independent artist, country rap" />
+  <meta name="keywords" content="PATE, Houston country hip hop artist, country rap, 072 music, SWAT Nation, Southwest Alief music, Houston independent artist, Growing Up in the 072, country hip hop crossover, Southern rap Houston, Houston 072, independent country rap 2024, Houston slab culture country music, Houston music scene, country western hip hop fusion, Houston 072 artist, SWAT Nation Houston, DJ Screw Houston country, country rap artist Texas, Alief Houston music, patemusic.live" />
   <meta name="author" content="PATE" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://patemusic.live/" />
@@ -435,6 +435,43 @@
       </div>
     </section>
 
+
+    <!-- ───── RADIO — clickable stations ───── -->
+    <section class="radio-section" id="radio" aria-label="Radio stations">
+      <div class="radio-inner">
+        <p class="panel-eyebrow">On the Airwaves</p>
+        <h2 class="radio-title">Houston Radio</h2>
+        <p class="radio-sub">The stations that built Houston's sound. Click to tune in — and if you hear something that moves you, request PATE.</p>
+        <div class="radio-grid">
+          <a href="https://www.979thebox.com" target="_blank" rel="noopener" class="radio-card">
+            <span class="radio-freq">97.9</span>
+            <span class="radio-name">The Box</span>
+            <span class="radio-market">Houston · Hip-Hop &amp; R&amp;B</span>
+            <span class="radio-arrow">&#8599;</span>
+          </a>
+          <a href="https://www.937thebeat.com" target="_blank" rel="noopener" class="radio-card">
+            <span class="radio-freq">93.7</span>
+            <span class="radio-name">The Beat</span>
+            <span class="radio-market">Houston · Hip-Hop &amp; R&amp;B</span>
+            <span class="radio-arrow">&#8599;</span>
+          </a>
+          <a href="https://kilt.iheart.com" target="_blank" rel="noopener" class="radio-card">
+            <span class="radio-freq">100.3</span>
+            <span class="radio-name">KILT · The Bull</span>
+            <span class="radio-market">Houston · Country</span>
+            <span class="radio-arrow">&#8599;</span>
+          </a>
+          <a href="https://www.939thearrow.com" target="_blank" rel="noopener" class="radio-card">
+            <span class="radio-freq">93.9</span>
+            <span class="radio-name">The Arrow</span>
+            <span class="radio-market">Houston · Country Crossover</span>
+            <span class="radio-arrow">&#8599;</span>
+          </a>
+        </div>
+        <p class="radio-note">Houston is one of the few cities where Country and Hip-Hop share the same culture. PATE lives at that intersection.</p>
+      </div>
+    </section>
+
     <!-- ───── ABOUT — dark cinematic with candid hero ───── -->
     <section class="about-section" id="about">
       <div class="about-bg">
@@ -485,6 +522,10 @@
           <img src="assets/images/inspire_logo.jpg" alt="Inspire by J Michaels — Est. 2024" class="inspire-logo" loading="lazy" />
           <p class="inspire-tagline">Learn. Live. Love to Inspire.</p>
           <p class="inspire-copy">A creative force empowering individuals and uplifting communities through purposeful design and transformative experiences. LTIbyJMichael fuels creativity, cultivates confidence, and inspires lasting impact — Est. 2024.</p>
+          <blockquote class="brand-ar-quote">
+            <p>"When we saw what PATE was building, it was a perfect alignment. His music carries the same mission we do — learn, live, and love to inspire. We're proud to move with him."</p>
+            <cite>— J. Michaels, Founder &amp; Creative Director, LTIbyJMichael</cite>
+          </blockquote>
           <a href="https://www.ltibyjmichael.com" target="_blank" rel="noopener" class="btn-outline-white inspire-cta">Shop Inspire</a>
         </div>
         <div class="inspire-lookbook">
@@ -504,6 +545,10 @@
           <p class="inspire-brand-name">Designs by MYK LLC</p>
           <p class="inspire-tagline">Creative Solutions for Creators.</p>
           <p class="inspire-copy">A creative solutions partner specializing in innovative digital design, software, and tools tailored for musicians, artists, and entrepreneurs. Empowering creatives with streamlined, high-quality resources that elevate branding, productivity, and growth.</p>
+          <blockquote class="brand-ar-quote">
+            <p>"PATE brings an authenticity that's rare. When our team first encountered his sound, we knew immediately — this artist needed visuals and tools that could match that energy. Building alongside SWAT Nation has been one of our best collaborations."</p>
+            <cite>— MYK, Founder, Designs by MYK LLC</cite>
+          </blockquote>
           <a href="mailto:Publicist@Patemusic.live" class="btn-outline-white inspire-cta">Connect with MYK</a>
         </div>
       </div>
@@ -554,6 +599,17 @@
           <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" rel="noopener" class="btn-outline-white">Stream "Growing Up in the 072"</a>
           <a href="https://patemusic.taplink.bio" target="_blank" rel="noopener" class="btn-outline-white">All Links</a>
         </div>
+
+        <!-- Email signup -->
+        <div class="email-signup">
+          <p class="email-signup-label">Join the SWAT Nation — get first access to new music, shows, and drops.</p>
+          <form class="email-signup-form" id="email-signup-form" onsubmit="handleEmailSignup(event)">
+            <input type="email" class="email-signup-input" id="email-input" placeholder="your@email.com" required aria-label="Email address" />
+            <button type="submit" class="email-signup-btn">Join the List</button>
+          </form>
+          <p class="email-signup-confirm" id="email-confirm" style="display:none;">You're in. SWAT Nation welcomes you.</p>
+        </div>
+
       </div>
     </section>
 
@@ -569,6 +625,14 @@
         <a href="https://patemusic.taplink.bio" target="_blank" rel="noopener">Bio Page</a>
         <a href="https://distrokid.com/hyperfollow/pate10/growing-up-in-the-072-swat-nation/" target="_blank" rel="noopener">Stream</a>
       </div>
+      <div class="footer-stream-links">
+        <a href="https://open.spotify.com/playlist/0Xb4WTtvcyiLJ3UJYkY8EU" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://music.apple.com/us/album/growing-up-in-the-072-s-w-a-t-nation/6773266215" target="_blank" rel="noopener">Apple Music</a>
+        <a href="https://music.amazon.com/albums/B0H2YVPQCP" target="_blank" rel="noopener">Amazon Music</a>
+        <a href="https://youtube.com/channel/UCKrrdkKMDa_H-jcdCAEmTZw" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/pate.music" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@patemusic.live" target="_blank" rel="noopener">TikTok</a>
+      </div>
       <p class="footer-legal">© 2026 PATE · SWAT Nation · Houston 072 · All rights reserved</p>
     </div>
   </footer>
@@ -576,22 +640,19 @@
 
   <!-- ───── AMBIENT MUSIC PLAYER ───── -->
   <div class="music-player" id="music-player" aria-label="Background music player">
-    <audio id="ambient-audio" loop preload="none">
-      <!-- Track from PATE's album — Growing Up in the 072 -->
-      <source src="https://open.spotify.com/track/0Xb4WTtvcyiLJ3UJYkY8EU" type="audio/mpeg" />
-    </audio>
     <button class="mp-btn" id="mp-toggle" aria-label="Play background music" title="Play ambient music">
       <svg class="mp-icon mp-play" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg>
       <svg class="mp-icon mp-pause" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
     <div class="mp-info">
-      <span class="mp-title">Growing Up in the 072</span>
+      <span class="mp-title" id="mp-title-text">Growing Up in the 072</span>
       <span class="mp-artist">PATE</span>
+      <a class="mp-spotify-link" id="mp-spotify-link" href="https://open.spotify.com/playlist/0Xb4WTtvcyiLJ3UJYkY8EU" target="_blank" rel="noopener" title="Get it on Spotify">Get it on Spotify &#8599;</a>
     </div>
     <div class="mp-vol">
-      <input type="range" id="mp-volume" min="0" max="100" value="5" aria-label="Volume" />
+      <input type="range" id="mp-volume" min="0" max="100" value="40" aria-label="Volume" />
     </div>
-    <button class="mp-close" id="mp-close" aria-label="Dismiss player">×</button>
+    <button class="mp-close" id="mp-close" aria-label="Dismiss player">&#215;</button>
   </div>
 
   <script src="main.js"></script>

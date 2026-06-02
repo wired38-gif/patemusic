@@ -1497,3 +1497,228 @@ body {
   .cloudy-interlude { height: 180px; }
   .neon-panel { height: 45vh; min-height: 280px; }
 }
+
+
+/* ─── NOW PLAYING — Spotify link in music player ─── */
+.mp-spotify-link {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1DB954;
+  margin-top: 0.15rem;
+  opacity: 0.85;
+  transition: opacity var(--t-fast), color var(--t-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp-spotify-link:hover { opacity: 1; color: #1ed760; }
+
+/* ─── RADIO SECTION ─── */
+.radio-section {
+  background: #040404;
+  padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 6vw, 8rem);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.radio-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.radio-title {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.radio-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  max-width: 60ch;
+  margin-bottom: 3rem;
+}
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2.5rem;
+}
+.radio-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 2rem 1.75rem;
+  background: #0a0a0a;
+  border: none;
+  transition: background var(--t-fast);
+  position: relative;
+}
+.radio-card:hover {
+  background: rgba(212,175,55,0.07);
+}
+.radio-card:hover .radio-freq { color: var(--gold); }
+.radio-card:hover .radio-arrow { opacity: 1; color: var(--gold); }
+.radio-freq {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.02em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  transition: color var(--t-fast);
+}
+.radio-name {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--white);
+}
+.radio-market {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 0.1rem;
+}
+.radio-arrow {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.25);
+  transition: opacity var(--t-fast), color var(--t-fast);
+}
+.radio-note {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.65rem;
+  letter-spacing: var(--track-med);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+
+/* ─── BRAND A&R QUOTE ─── */
+.brand-ar-quote {
+  border-left: 2px solid rgba(212,175,55,0.5);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  background: rgba(212,175,55,0.04);
+}
+.brand-ar-quote p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  margin-bottom: 0.6rem;
+}
+.brand-ar-quote cite {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ─── EMAIL SIGNUP ─── */
+.email-signup {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  max-width: 560px;
+}
+.email-signup-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.2rem;
+}
+.email-signup-form {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.email-signup-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: none;
+  outline: none;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--white);
+  min-width: 0;
+}
+.email-signup-input::placeholder { color: rgba(255,255,255,0.3); }
+.email-signup-btn {
+  background: rgba(212,175,55,0.12);
+  border: none;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--gold);
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+  white-space: nowrap;
+}
+.email-signup-btn:hover { background: rgba(212,175,55,0.22); color: var(--white); }
+.email-signup-confirm {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.68rem;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.75rem 0;
+}
+
+/* ─── FOOTER STREAMING LINKS ─── */
+.footer-stream-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.footer-stream-links a {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.6rem;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  transition: color var(--t-fast);
+}
+.footer-stream-links a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .radio-grid { grid-template-columns: 1fr 1fr; }
+  .email-signup-form { flex-direction: column; }
+  .email-signup-btn { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); }
+}
+@media (max-width: 400px) {
+  .radio-grid { grid-template-columns: 1fr; }
+}
