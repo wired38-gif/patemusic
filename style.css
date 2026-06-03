@@ -1921,3 +1921,15 @@ body {
   .inspire-gallery-item:first-child { border-right: none; border-bottom: 2px solid rgba(212,175,55,0.2); }
   .inspire-gallery-item:last-child  { border-left:  none; border-top:    2px solid rgba(212,175,55,0.2); }
 }
+
+/* ─── BRUSO / BRAND NAME heading ─── */
+.inspire-brand-name {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
