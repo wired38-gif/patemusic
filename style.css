@@ -1933,3 +1933,19 @@ body {
   margin-bottom: 1rem;
   line-height: 1.1;
 }
+
+/* ─── DESIGNS BY MYK FOOTER CREDIT ─── */
+.footer-myk {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-top: 0.5rem;
+}
+.footer-myk-link {
+  color: rgba(212,175,55,0.55);
+  transition: color var(--t-fast);
+}
+.footer-myk-link:hover { color: var(--gold); }
