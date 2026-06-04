@@ -154,37 +154,49 @@ let _trackIdx = 0;
     playing = false;
   }
 
-  // Build hidden YouTube iframe (1x1 off-screen — audio only)
-  const trackId  = PATE_TRACKS[0].ytId;
-  const ytFrame  = document.createElement('iframe');
-  ytFrame.id     = 'yt-audio-frame';
-  ytFrame.title  = 'PATE ambient audio player';
-  ytFrame.src    = 'https://www.youtube.com/embed/' + trackId
-                 + '?enablejsapi=1&autoplay=0&controls=0&loop=1&playlist=' + trackId
-                 + '&origin=' + location.origin;
-  ytFrame.allow  = 'autoplay; encrypted-media';
-  ytFrame.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
-  document.body.appendChild(ytFrame);
+  // Create a named div for YT.Player to target (more reliable than iframe src approach)
+  const ytDiv = document.createElement('div');
+  ytDiv.id    = 'yt-audio-frame';
+  ytDiv.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
+  document.body.appendChild(ytDiv);
 
-  // YouTube IFrame API callback
+  // YouTube IFrame API callback — use YT.Player({videoId}) instead of iframe src
+  // This avoids origin mismatch issues on hosted domains
   window.onYouTubeIframeAPIReady = function () {
     ytPlayer = new window.YT.Player('yt-audio-frame', {
+      width: '1',
+      height: '1',
+      videoId: PATE_TRACKS[0].ytId,
+      playerVars: {
+        autoplay:       0,
+        controls:       0,
+        disablekb:      1,
+        enablejsapi:    1,
+        loop:           1,
+        playlist:       PATE_TRACKS[0].ytId,
+        rel:            0,
+        modestbranding: 1
+      },
       events: {
         onReady: function (e) {
           e.target.setVolume(40);
-          // If user already gestured before API finished loading, play now
           if (autoPlayed) {
             e.target.playVideo();
             showPause();
           }
         },
         onStateChange: function (e) {
-          // Loop to next track when ended
           if (e.data === window.YT.PlayerState.ENDED) {
             _trackIdx = (_trackIdx + 1) % PATE_TRACKS.length;
             setTrack(_trackIdx);
             ytPlayer.loadVideoById(PATE_TRACKS[_trackIdx].ytId);
           }
+        },
+        onError: function(e) {
+          // If video errors, try reloading after short delay
+          setTimeout(function() {
+            if (ytPlayer) ytPlayer.loadVideoById(PATE_TRACKS[_trackIdx].ytId);
+          }, 2000);
         }
       }
     });
