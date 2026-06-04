@@ -4,10 +4,27 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve all static files from the current directory
+// ── Force HTTPS on GoDaddy (X-Forwarded-Proto header) ──
+app.use((req, res, next) => {
+  const proto = req.headers['x-forwarded-proto'];
+  if (proto && proto !== 'https') {
+    return res.redirect(301, 'https://' + req.headers.host + req.url);
+  }
+  next();
+});
+
+// ── Serve static files ──
 app.use(express.static(path.join(__dirname)));
 
-// SPA fallback — serve index.html for any unmatched route
+// ── Named HTML routes ──
+app.get('/bio', (req, res) => {
+  res.sendFile(path.join(__dirname, 'bio.html'));
+});
+app.get('/epk', (req, res) => {
+  res.sendFile(path.join(__dirname, 'epk.html'));
+});
+
+// ── Fallback ──
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
