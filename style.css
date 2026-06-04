@@ -1949,3 +1949,152 @@ body {
   transition: color var(--t-fast);
 }
 .footer-myk-link:hover { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   BRAND PARTNER — DISTINCT COLOR SCHEMES
+   ══════════════════════════════════════════ */
+
+/* ── SHARED: brand badge chip ── */
+.brand-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 0.75rem;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────
+   LTI BY J MICHAEL — INSPIRE
+   Warm navy + celestial gold + sky blue
+   Vibe: motivational, community, elevated
+   ───────────────────────────────────────── */
+.brand-lti {
+  background: linear-gradient(160deg, rgba(10,20,50,0.85) 0%, rgba(5,12,35,0.9) 100%);
+  border-top: 1px solid rgba(100,160,255,0.15);
+  padding: 3rem 2rem;
+  margin: 0 -2rem;
+}
+.brand-badge-lti {
+  background: rgba(100,160,255,0.1);
+  border: 1px solid rgba(100,160,255,0.35);
+  color: #6AA0FF;
+}
+.brand-lti .lti-tagline {
+  color: #6AA0FF;
+  text-shadow: 0 0 18px rgba(100,160,255,0.4);
+}
+.brand-lti .inspire-copy {
+  color: rgba(220,230,255,0.72);
+}
+.brand-lti .brand-ar-quote {
+  border-left-color: rgba(100,160,255,0.4);
+  background: rgba(100,160,255,0.05);
+}
+.brand-lti .brand-ar-quote p  { color: rgba(220,230,255,0.75); }
+.brand-lti .brand-ar-quote cite { color: #6AA0FF; }
+.brand-lti .inspire-cta {
+  border-color: rgba(100,160,255,0.5) !important;
+  color: #6AA0FF !important;
+}
+.brand-lti .inspire-cta:hover {
+  background: rgba(100,160,255,0.12) !important;
+  color: #fff !important;
+}
+
+/* ─────────────────────────────────────────
+   DESIGNS BY MYK LLC
+   Electric blue + silver chrome + near-black
+   Vibe: tech, precision, digital, sleek
+   ───────────────────────────────────────── */
+.brand-myk {
+  background: linear-gradient(160deg, rgba(0,8,20,0.92) 0%, rgba(0,15,35,0.95) 100%);
+  border-top: 1px solid rgba(0,200,255,0.12);
+  padding: 3rem 2rem;
+  margin: 0 -2rem;
+}
+.brand-badge-myk {
+  background: rgba(0,200,255,0.08);
+  border: 1px solid rgba(0,200,255,0.3);
+  color: #00C8FF;
+}
+.brand-myk .myk-name {
+  background: linear-gradient(90deg, #fff 0%, #00C8FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.brand-myk .myk-tagline {
+  color: #00C8FF;
+  text-shadow: 0 0 16px rgba(0,200,255,0.35);
+}
+.brand-myk .inspire-copy {
+  color: rgba(200,230,245,0.7);
+}
+.brand-myk .brand-ar-quote {
+  border-left-color: rgba(0,200,255,0.4);
+  background: rgba(0,200,255,0.04);
+}
+.brand-myk .brand-ar-quote p    { color: rgba(200,230,245,0.75); }
+.brand-myk .brand-ar-quote cite { color: #00C8FF; }
+.brand-myk .inspire-cta {
+  border-color: rgba(0,200,255,0.45) !important;
+  color: #00C8FF !important;
+}
+.brand-myk .inspire-cta:hover {
+  background: rgba(0,200,255,0.1) !important;
+  color: #fff !important;
+}
+
+/* ─────────────────────────────────────────
+   BRUSO DIGITAL MEDIA LLC
+   Deep teal + amber pulse + dark slate
+   Vibe: digital hustle, content, reach
+   ───────────────────────────────────────── */
+.brand-bruso {
+  background: linear-gradient(160deg, rgba(0,25,25,0.92) 0%, rgba(0,15,20,0.95) 100%);
+  border-top: 1px solid rgba(0,210,180,0.12);
+  padding: 3rem 2rem;
+  margin: 0 -2rem;
+}
+.brand-badge-bruso {
+  background: rgba(0,210,180,0.08);
+  border: 1px solid rgba(0,210,180,0.3);
+  color: #00D2B4;
+}
+.brand-bruso .bruso-tagline {
+  color: #00D2B4;
+  text-shadow: 0 0 16px rgba(0,210,180,0.35);
+}
+.brand-bruso .bruso-name {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0,210,180,0.2);
+}
+.brand-bruso .inspire-copy {
+  color: rgba(200,240,235,0.7);
+}
+.brand-bruso .brand-ar-quote {
+  border-left-color: rgba(0,210,180,0.4);
+  background: rgba(0,210,180,0.04);
+}
+.brand-bruso .brand-ar-quote p    { color: rgba(200,240,235,0.75); }
+.brand-bruso .brand-ar-quote cite { color: #00D2B4; }
+.brand-bruso .inspire-cta {
+  border-color: rgba(0,210,180,0.45) !important;
+  color: #00D2B4 !important;
+}
+.brand-bruso .inspire-cta:hover {
+  background: rgba(0,210,180,0.1) !important;
+  color: #fff !important;
+}
+
+/* Section-level negative margin fix on mobile */
+@media (max-width: 768px) {
+  .brand-lti, .brand-myk, .brand-bruso {
+    margin: 0 -1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+}
